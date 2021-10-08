@@ -5,6 +5,7 @@ const fs = require('fs');
 
 // REQUIRE JSON DB
 const db = require('./db/db.json');
+const { send } = require('process');
 
 const PORT = 3001;
 const app = express();
@@ -14,17 +15,33 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.get('/', (req, res) =>
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
-);
+});
 
-app.get('/api/notes', (req, res) => {
+app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/notes.html'));
-    res.json(`${req.method} request received`);
-
     console.info(`${req.method} request recieved`);
 });
 
+app.get('/api/notes', (req, res) => {
+    res.json(db);
+});
+
+app.post('/api/notes', (req, res) => {
+    let newNote = {
+        title: req.query.noteTitle,
+        text: req.query.noteText
+    }
+    db.push(newNote);
+
+    // Save to file?
+    console.info(`${req.method} request recieved`);
+    
+    fs.writeFile(path.join(__dirname, '/db/db.json'), {flag: 'w+'}, JSON.stringify(db), () => {
+        res.json(newNote);
+    });
+});
 
 
 // LISTEN TO PORT
