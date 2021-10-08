@@ -38,7 +38,7 @@ app.post('/api/notes', (req, res) => {
     // Save to file?
     console.info(`${req.method} request recieved`);
     
-    fs.writeFile(path.join(__dirname, '/db/db.json'), {flag: 'w+'}, JSON.stringify(db), () => {
+    fs.writeFile(path.join(__dirname, '/db/db.json'), JSON.stringify(db), {flag: 'w+'}, () => {
         res.json(newNote);
     });
 });
