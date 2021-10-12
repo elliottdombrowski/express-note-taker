@@ -2,7 +2,7 @@
 const express = require('express');
 
 //DECLARE PORT TO LISTEN ON
-const PORT = 3001;
+const PORT = 5000;
 const app = express();
 
 // BOILERPLATE MIDDLEWARE
