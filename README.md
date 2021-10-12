@@ -8,7 +8,7 @@
 ---
 
 # USAGE
-## The user can start their Express.js server by running "npm start." Once the server is live, the user can point their browser at the port provided to view the webpage. 
+## The user can start their Express.js server by running "heroku open." This will open the page in the browser from the command line.. 
 
 ```
 WHEN I type my note, I am presented with a "save" icon in the page header.
@@ -19,9 +19,13 @@ WHEN I click the "Delete" button next to a saved note, that note is removed from
 ```
 
 # SCREENSHOTS
-![Screenshot](./public/imgs/express1.png)
 ![Screenshot](./public/imgs/express2.png)
 
+---
+
+![Screenshot](./public/imgs/express1.png)
+
 # LINK TO DEPLOYED APPLICATION
+## https://evening-chamber-46130.herokuapp.com/
 
 ---
